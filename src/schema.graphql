@@ -1,3 +1,29 @@
+scalar Date
+
 type Query {
   hello: String
+  users: [User!]!
+  user(id: ID!): User!
+  me: User!
+}
+
+type Mutation {
+  login(email: String!, password: String!): User!
+  signUp(user: UserInput!): User
+}
+
+input UserInput {
+  id: ID
+  name: String!
+  lastName: String!
+  email: String!
+  password: String!  
+}
+
+type User {
+  id: ID!
+  name: String!
+  lasName: String!
+  email: String!
+  createdAt: Date!
 }
