@@ -34,5 +34,9 @@ app.listen(PORT, () => {
   mongoose.connect('mongodb://localhost:27017/graphql', {
     useNewUrlParser: true,
     useUnifiedTopology: true
-  });
+  })
+  .catch(() => {
+    logger(chalk.bold.red(`we can not connect to mongo`))
+    process.exit(1)
+  })
 })
