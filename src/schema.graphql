@@ -8,16 +8,13 @@ type Query {
 }
 
 type Mutation {
-  login(email: String!, password: String!): User!
+  login(email: String!, password: String!): Auth!
   signUp(user: UserInput!): User!
 }
 
-input UserInput {
-  id: ID
-  name: String!
-  lastName: String!
-  email: String!
-  password: String!  
+type Auth {
+  token: String!
+  user: User!
 }
 
 type User {
@@ -26,4 +23,12 @@ type User {
   lasName: String!
   email: String!
   createdAt: Date!
+}
+
+input UserInput {
+  id: ID
+  name: String!
+  lastName: String!
+  email: String!
+  password: String!  
 }

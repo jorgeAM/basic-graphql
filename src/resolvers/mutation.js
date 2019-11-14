@@ -1,4 +1,5 @@
 import bcrypt from 'bcrypt'
+import { sign } from '../lib/jwt'
 
 export const Mutation = {
   login: async (_, { email, password }, ctx) => {
@@ -6,7 +7,8 @@ export const Mutation = {
     if (!user) throw new Error('User does not exist!')
     const check = bcrypt.compareSync(password, user.password)
     if (!check) throw new Error('wrong password!')
-    return user
+    const token = sign(user)
+    return { token, user }
   },
   signUp: async (_, args, ctx) => {
     const { user: { name, lastName, email, password }} = args
