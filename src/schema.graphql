@@ -12,6 +12,10 @@ type Mutation {
   signUp(user: UserInput!): User!
 }
 
+type Subscription {
+  newUser: User!  
+}
+
 type Auth {
   token: String!
   user: User!
@@ -20,7 +24,7 @@ type Auth {
 type User {
   id: ID!
   name: String!
-  lasName: String!
+  lastName: String!
   email: String!
   createdAt: Date!
 }

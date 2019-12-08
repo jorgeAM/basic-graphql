@@ -19,6 +19,7 @@ export const Mutation = {
       password: bcrypt.hashSync(password, 10)
     }) 
 
+    ctx.pubSub.publish('NEW_USER', { newUser: user })
     return user 
   }
 }
